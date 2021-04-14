@@ -1,10 +1,20 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+import BaseHeader from '../layout/BaseHeader.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    name: 'Base',
+    redirect: '/home',
+    component: BaseHeader,
+    children:[
+      {
+        path: '/home',
+				name: 'home',
+				meta: { title: '首页' },
+        component:() => import(/* webpackChunkName: "group-pro" */'../views/Home/index.vue')
+      }
+    ]
   },
 ]
 
