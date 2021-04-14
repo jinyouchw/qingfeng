@@ -7,6 +7,7 @@ import { registerComp } from './components/registerComp'
 
 import 'ant-design-vue/dist/antd.css';
 
+import 'flex.css'
 
 const app =  createApp(App)
 
