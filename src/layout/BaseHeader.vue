@@ -1,26 +1,39 @@
 <template>
   <div class="nav" flex ='dir:top'>
-     <div class="nav-content"></div>
+     <div class="nav-content" flex ='dir:left main:justify cross:center'>
+        <div><span>{{ $t("message.appName") }}</span>{{ $t("message.slogan") }}</div>
+        <a-space  flex ='dir:left'>
+          <UserOutlined />
+          <span>{{User.userInfo.name}}</span>
+          <Language />
+        </a-space>
+     </div>
      <router-view style="flex:1"></router-view>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+import { UserOutlined } from '@ant-design/icons-vue';
+import { mapState, mapActions  } from 'vuex'
+import  Language from './component/language.vue'
 
 export default defineComponent({
   name: 'nav',
-  components: { },
+  computed: mapState([ 'User']),
+  components: { UserOutlined, Language },
+  methods:{
+      ...mapActions(['getUserInfo'])
+  }
 });
 </script>
 <style scoped lang='scss'>
 $nav-height: 48px;
 .nav{
   .nav-content{
-      height: $nav-height;
-      //box-shadow:0px 15px 10px -16px #999999;
-      box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08);
+    height: $nav-height;
+    padding: 0 20px 0 10px;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08);
   }
 }
 </style>
