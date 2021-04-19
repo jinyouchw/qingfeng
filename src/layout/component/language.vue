@@ -1,12 +1,12 @@
 <template>
     <a-dropdown>
       <span class="ant-dropdown-link" @click.prevent>
-        {{lang}}
+        {{lang==='cn'?'中文':'日本語'}}
         <DownOutlined />
       </span>
       <template #overlay>
         <a-menu>
-          <a-menu-item v-for="item in langList" :key="item.key" @click="changLang(item.name)">
+          <a-menu-item v-for="item in langList" :key="item.key" @click="changLang(item.key)">
             <span>{{item.name}}</span>
           </a-menu-item>
         </a-menu>
@@ -14,24 +14,27 @@
     </a-dropdown>
 </template>
 <script lang='ts'>
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, reactive, computed, getCurrentInstance  } from 'vue'
 import {  DownOutlined } from '@ant-design/icons-vue';
+import { useStore } from "vuex";
 /* eslint-disable */ 
-
+   
 export default defineComponent({
   name:"language",
   components: {  DownOutlined },
-  setup() {
-		let lang = ref("中文")
+  setup() { 
     const langList = reactive([
       {name:"中文", key:"cn"},
-      {name:"日文", key:"ja"},
+      {name:"日本語", key:"ja"},
     ]) 
-		const changLang = (item:any) => {
-      lang = item
-		  console.log('item', item, lang)
+		const store = useStore()
+		const lang = computed(() => {return store.state.language})
+		const internalInstance:any  = getCurrentInstance() 
+		const changLang = (item:string) => {
+      store.commit('setLanguage', item)
+			internalInstance.ctx.$i18n.locale = item
 		}
-    return { langList, lang, changLang}
+    return { langList, changLang, lang }
   }
 })
 </script>
