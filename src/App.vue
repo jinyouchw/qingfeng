@@ -21,5 +21,24 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-
+#app {
+	min-width: 1440px;
+	font-family: PingFangSC-Medium;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: normal;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+  .ant-spin-nested-loading{
+    height: 100%;
+    .ant-spin-container{
+     height: 100%;
+  }
+  }
+}
 </style>

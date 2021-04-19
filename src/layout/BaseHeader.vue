@@ -1,7 +1,7 @@
 <template>
   <div class="nav" flex ='dir:top'>
      <div class="nav-content" flex ='dir:left main:justify cross:center'>
-        <div><span>{{ $t("message.appName") }}</span>{{ $t("message.slogan") }}</div>
+        <div class="content-des"><span>{{ $t("message.appName") }}</span>{{ $t("message.slogan") }}</div>
         <a-space  flex ='dir:left'>
           <UserOutlined />
           <span>{{User.userInfo.name}}</span>
@@ -30,10 +30,18 @@ export default defineComponent({
 <style scoped lang='scss'>
 $nav-height: 48px;
 .nav{
+    width: 100%;
+    height: 100%;
   .nav-content{
     height: $nav-height;
     padding: 0 20px 0 10px;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08);
+    .content-des{
+        font-size: 18px;
+        &>span:first-child{
+            margin-right: 10px;
+        }
+    }
   }
 }
 </style>
