@@ -3,9 +3,10 @@
      <div class="nav-content" flex ='dir:left main:justify cross:center'>
         <div class="content-des"><span>{{ $t("message.appName") }}</span>{{ $t("message.slogan") }}</div>
         <a-space  flex ='dir:left'>
-          <UserOutlined />
-          <span>{{User.userInfo.name}}</span>
+          <UserOutlined v-if="User.userInfo.name" />
+          <span v-if="User.userInfo.name">{{User.userInfo.name}}</span>
           <Language />
+          <span>退出</span>
         </a-space>
      </div>
      <router-view style="flex:1"></router-view>

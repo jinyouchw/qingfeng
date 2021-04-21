@@ -3,7 +3,7 @@ import { ActionContext } from 'vuex'
 const User:any =  {
     state:{
       userInfo:{
-          name:"小二"
+          name:""
       }
     },
     mutations:{
@@ -12,8 +12,8 @@ const User:any =  {
         }
     },
     actions:{
-        async getUserInfo(context:any ) {
-            const res = await {name:"小王"}
+        async getUserInfo(context:any,data:any ) {
+            const res = await data
             context.commit('login', res)
         }
         

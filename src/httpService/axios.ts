@@ -100,7 +100,7 @@ function fetch(url: string, method: string, params: any, option: ParamOption = <
         case 401:
         // 跳转到登录界面
          
-          break
+        break
       }
       option.error && option.error(errorMsg)
       option.finally && option.finally()
