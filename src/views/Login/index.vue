@@ -60,10 +60,10 @@ export default defineComponent({
     const onSubmit = () => {
       formRef.value
         .validate()
-        .then(() => {
+        .then(async() => {
           console.log('values', formState, store);
-          store.dispatch('getUserInfo', {name:"小黄"})
-          router.push('/home') 
+         await store.dispatch('getUserInfo', {name:"小黄",auth:'note'})
+          router.push({name:'home'}) 
         })
         .catch((error: ValidateErrorEntity<FormState>) => {
           console.log('error', error);

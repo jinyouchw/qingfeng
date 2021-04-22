@@ -3,7 +3,8 @@ import { ActionContext } from 'vuex'
 const User:any =  {
     state:{
       userInfo:{
-          name:""
+          name:"",
+          auth:""
       }
     },
     mutations:{

@@ -1,6 +1,6 @@
 <template>
   <div class="home" flex ='dir:left '>
-      <div class="plate" v-for="item in list" :key="item.key">
+      <div class="plate" v-for="item in list" :key="item.key" @click="toPlate(item.key)">
         {{item.name}}
       </div>
   </div>
@@ -9,6 +9,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
 import { getMoudleList } from './service'
+import { useRouter } from 'vue-router'
   /* eslint-disable */
 export default defineComponent({
   name: 'Home',
@@ -20,10 +21,14 @@ export default defineComponent({
         list.value = res.data.moudleList
       })
     }
+    const router = useRouter()
+    const toPlate = (key:string) => {
+      router.push({name:key})
+    }
     onMounted(() => {
       getModleListInfo()
     })
-    return { list }
+    return { list, toPlate }
   }
 });
 
