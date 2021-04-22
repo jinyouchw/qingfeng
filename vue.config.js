@@ -1,5 +1,4 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? [, '/support', '/appcenter', '/devops', '/', '/operation', '/audit'][process.env.VUE_APP_SYSTEM] || '/' : '/',
     productionSourceMap: false,
     css: {
         sourceMap: false,
