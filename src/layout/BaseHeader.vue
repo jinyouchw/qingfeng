@@ -6,25 +6,45 @@
           <UserOutlined v-if="User.userInfo.name" />
           <span v-if="User.userInfo.name">{{User.userInfo.name}}</span>
           <Language />
-          <span>退出</span>
+          <span v-if="User.userInfo.name"  class="loginout" @click="loginOut">退出</span>
         </a-space>
      </div>
-     <router-view style="flex:1"></router-view>
+     <router-view style="flex:1"></router-view> 
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, createVNode, computed } from 'vue';
 import { UserOutlined } from '@ant-design/icons-vue';
-import { mapState, mapActions  } from 'vuex'
 import  Language from './component/language.vue'
+import { useStore } from "vuex";
+import { Modal } from 'ant-design-vue';
+import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'nav',
-  computed: mapState([ 'User']),
   components: { UserOutlined, Language },
-  methods:{
-      ...mapActions(['getUserInfo'])
+  setup() {
+    const store = useStore()
+    const router = useRouter()
+    const User  = computed(() => {return store.state.User})
+    const loginOut = () => {
+      Modal.confirm({
+        title: '是否确认退出',
+        icon: createVNode(ExclamationCircleOutlined),
+        content: '',
+        okText:"确定",
+        cancelText:"取消",
+        onOk() {
+          store.dispatch('getUserInfo', {name:"",auth:''})
+          console.log('store',store)
+          router.push('/login')
+        },
+      });
+      
+    }
+    return{ loginOut, User }
   }
 });
 </script>
@@ -42,6 +62,9 @@ $nav-height: 48px;
         &>span:first-child{
             margin-right: 10px;
         }
+    }
+    .loginout{
+      cursor: pointer;
     }
   }
 }
