@@ -23,7 +23,7 @@ export default defineComponent({
   name:"language",
   components: {  DownOutlined },
   setup() { 
-    const langList = reactive([
+    const langList = reactive<Array<any>>([
       {name:"中文", key:"cn"},
       {name:"日本語", key:"ja"},
     ]) 
