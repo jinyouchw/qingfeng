@@ -19,5 +19,5 @@ export default defineComponent({
 
 </script>
 <style lang="scss" scoped>
-
+@import './book.scss'
 </style>

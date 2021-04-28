@@ -15,6 +15,10 @@ export default defineComponent({
   computed: mapState(['spinning']),
   components:{Spin},
   setup() {
+    onMounted(() => {
+      console.log("BASE_URL: ", process.env.BASE_URL);
+      console.log("VUE_APP_DATA: ", process.env.VUE_APP_DATA);
+    })
     return {  }
   }
 });

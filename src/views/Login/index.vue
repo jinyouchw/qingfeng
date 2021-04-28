@@ -62,7 +62,7 @@ export default defineComponent({
         .validate()
         .then(async() => {
           console.log('values', formState, store);
-         await store.dispatch('getUserInfo', {name:"小黄",auth:'note'})
+         await store.dispatch('getUserInfo', {name:"小黄",auth:'all'})
           router.push({name:'home'}) 
         })
         .catch((error: ValidateErrorEntity<FormState>) => {
