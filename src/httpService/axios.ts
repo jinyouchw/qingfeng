@@ -1,4 +1,3 @@
-/* eslint-disable */ 
 import axios, { AxiosResponse, AxiosTransformer } from 'axios'
 import { message } from 'ant-design-vue'
 

@@ -17,7 +17,7 @@ export default defineComponent({
   setup() {
     const list = ref<Array<any>>([]);
     const getModleListInfo = async () => {
-    await  getMoudleList({},{}).then( (res:any) => {
+    await  getMoudleList().then( (res:any) => {
         list.value = res.data.moudleList
       })
     }

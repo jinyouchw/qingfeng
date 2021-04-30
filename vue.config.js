@@ -21,10 +21,10 @@ module.exports = {
             .set("@views", resolve("src/views"))
             .set("@layouts", resolve("src/layouts"));
 
-        // 打包分析
-        config.plugin("webpack-report").use(BundleAnalyzerPlugin, [{
-            analyzerMode: "static"
-        }]);
+        // // 打包分析
+        // config.plugin("webpack-report").use(BundleAnalyzerPlugin, [{
+        //     analyzerMode: "static"
+        // }]);
 
         const cdn = {
             css: [],

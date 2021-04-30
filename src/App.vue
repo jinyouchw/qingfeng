@@ -16,6 +16,7 @@ export default defineComponent({
   components:{Spin},
   setup() {
     onMounted(() => {
+      // 环境配置的参数
       console.log("BASE_URL: ", process.env.BASE_URL);
       console.log("VUE_APP_DATA: ", process.env.VUE_APP_DATA);
     })
